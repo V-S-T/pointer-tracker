@@ -10,35 +10,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
 
 const esm = {
-  plugins: [typescript({ useTsconfigDeclarationDir: false })],
+  plugins: [typescript({ tsconfig: './tsconfig.json' })],
   input: 'lib/index.ts',
   output: {
     file: 'dist/PointerTracker.mjs',
     format: 'esm',
+    sourcemap: true,
   },
 };
 
 const umd = {
   input: 'dist/PointerTracker.mjs',
+  plugins: [
+    terser({
+      compress: { ecma: 6 },
+    }),
+  ],
   output: [
     {
       file: 'dist/PointerTracker.js',
       format: 'umd',
       name: 'PointerTracker',
+      sourcemap: true,
     },
     {
-      plugins: [
-        terser({
-          compress: { ecma: 6 },
-        }),
-      ],
       file: 'dist/PointerTracker-min.js',
       format: 'umd',
       name: 'PointerTracker',
+      sourcemap: true,
     },
   ],
 };

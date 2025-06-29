@@ -27,6 +27,7 @@ class Pointer {
             // https://github.com/w3c/pointerevents/issues/409
             if (events.length > 0)
                 return events;
+            // Otherwise, Firefox falls through…
         }
         return [this];
     }
@@ -247,3 +248,4 @@ class PointerTracker {
 }
 
 export { PointerTracker as default };
+//# sourceMappingURL=PointerTracker.mjs.map

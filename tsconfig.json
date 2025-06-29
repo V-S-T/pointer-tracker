@@ -9,6 +9,7 @@
     "sourceMap": true,
     "declaration": true,
     "allowJs": false,
-    "baseUrl": "."
-  },
+    "baseUrl": ".",
+    "outDir": "./dist"
+  }
 }
